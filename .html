@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basketball Data Storage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        header, footer {
+            background: #f4f4f4;
+            padding: 10px;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        th {
+            background: #f4f4f4;
+        }
+        form {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Basketball Data Storage</h1>
+    <p>Store and manage basketball player statistics.</p>
+</header>
+
+<main>
+    <section>
+        <h2>Add New Player</h2>
+        <form id="player-form">
+            <label for="player-name">Player Name:</label>
+            <input type="text" id="player-name" required>
+            <label for="team">Team:</label>
+            <input type="text" id="team" required>
+            <label for="points">Points:</label>
+            <input type="number" id="points" required>
+            <label for="rebounds">Rebounds:</label>
+            <input type="number" id="rebounds" required>
+            <label for="assists">Assists:</label>
+            <input type="number" id="assists" required>
+            <button type="submit">Add Player</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>Player Statistics</h2>
+        <table id="player-table">
+            <thead>
+                <tr>
+                    <th>Player Name</th>
+                    <th>Team</th>
+                    <th>Points</th>
+                    <th>Rebounds</th>
+                    <th>Assists</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Player data will be dynamically inserted here -->
+            </tbody>
+        </table>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 Basketball Data Management</p>
+</footer>
+
+<script>
+    document.getElementById('player-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const name = document.getElementById('player-name').value;
+        const team = document.getElementById('team').value;
+        const points = document.getElementById('points').value;
+        const rebounds = document.getElementById('rebounds').value;
+        const assists = document.getElementById('assists').value;
+
+        const tableBody = document.getElementById('player-table').querySelector('tbody');
+        const newRow = document.createElement('tr');
+
+        newRow.innerHTML = `
+            <td>${name}</td>
+            <td>${team}</td>
+            <td>${points}</td>
+            <td>${rebounds}</td>
+            <td>${assists}</td>
+        `;
+        
+        tableBody.appendChild(newRow);
+
+        // Clear the form
+        this.reset();
+    });
+</script>
+
+</body>
+</html>
